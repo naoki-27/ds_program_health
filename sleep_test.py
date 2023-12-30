@@ -52,11 +52,11 @@ def scrape_and_insert():
 
     # データベースへの挿入
     path = '/Users/naoki/Lecture/ds_program_health/'
-    db_name = 'sleep.sqlite'
+    db_name = 'test.sqlite'
     con = sqlite3.connect(path + db_name)
     cur = con.cursor()
 
-    sql_insert_data = 'INSERT INTO sleep (date, sleep_point, high_temperature, low_temperature, precip, weather, coment) VALUES (?, ?, ?, ?, ?, ?, ?);'
+    sql_insert_data = 'INSERT INTO test (date, sleep_point, high_temperature, low_temperature, precip, weather, coment) VALUES (?, ?, ?, ?, ?, ?, ?);'
     cur.execute(sql_insert_data, (
         sleep_dict["date"],
         sleep_dict["sleep_point"],
@@ -71,3 +71,59 @@ def scrape_and_insert():
     con.close()
 
 scrape_and_insert()
+
+# 定期的に実行
+# if __name__ == "__main__":
+#     scrape_and_insert()
+
+
+# # 定期的に実行
+# if __name__ == "__main__":
+#     # スクリプトのディレクトリを取得
+#     script_directory = os.path.dirname(os.path.abspath(__file__))
+
+#     # 最後に実行した日のデータを保存するファイルパス
+#     last_execution_file = os.path.join(script_directory, 'last_execution_date.txt')
+
+#     while True:
+#         # 前回の実行日を読み込む
+#         try:
+#             with open(last_execution_file, 'r') as file:
+#                 last_execution_date_str = file.read().strip()
+#                 last_execution_date = datetime.strptime(last_execution_date_str, '%Y-%m-%d').date()
+#         except FileNotFoundError:
+#             # ファイルが存在しない場合は初回実行とみなし、昨日の日付を設定
+#             last_execution_date = datetime.now().date() - timedelta(days=1)
+
+#         # 現在の日付を取得
+#         current_date = datetime.now().date()
+
+#         # 日付が変わった場合のみスクレイピングとデータベース挿入を行う
+#         if current_date > last_execution_date:
+#             scrape_and_insert()
+
+#             # 実行日を更新
+#             with open(last_execution_file, 'w') as file:
+#                 file.write(current_date.strftime('%Y-%m-%d'))
+
+#         # 次の日まで待機
+#         time.sleep(86400)  # 1日ごとに実行（24時間） 
+
+# # 定期的に実行
+# while True:
+#     scrape_and_insert()
+#     time.sleep(60)  # 1時間ごとに実行
+
+
+
+# import os
+
+# スクリプトの絶対パスを取得
+# script_path = os.path.abspath(__file__)
+
+# # スクリプトのあるディレクトリの絶対パスを取得
+# script_directory = os.path.dirname(script_path)
+
+# スクリプトの絶対パスとディレクトリの絶対パスを表示
+# print("Script Path:", script_path)
+# print("Script Directory:", script_directory)
