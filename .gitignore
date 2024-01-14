@@ -2,6 +2,7 @@
 /log
 *.xlsx
 *.csv
+*.xml
 *.sqlite
 weather12.sqlite
 
