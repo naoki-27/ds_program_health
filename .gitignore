@@ -3,3 +3,6 @@
 *.xlsx
 *.csv
 *.sqlite
+weather1.sqlite
+weather12.sqlite
+sleep.sqlite
