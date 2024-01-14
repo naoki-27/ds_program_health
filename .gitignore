@@ -5,6 +5,6 @@
 *.sqlite
 weather12.sqlite
 
-sleep.sqlite
+/sleep.sqlite
 
-test.sqlite
+/test.sqlite
