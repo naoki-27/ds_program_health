@@ -4,5 +4,7 @@
 *.csv
 *.sqlite
 weather12.sqlite
-sleep.sqlite
-test.sqlite
+
+/sleep.sqlite
+
+/test.sqlite
